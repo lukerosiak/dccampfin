@@ -57,8 +57,8 @@ def createindex(fout,filingtype):
 def markamendments():
     headers = ['filingtype','page','link','cmte','office','period','year','draft']
     periods = {}
-    fin = csv.DictReader( open('pdf_index.csv','r') )
-    fout = csv.writer( open('pdf_index_newest.csv','w') )
+    fin = csv.DictReader( open('output/pdf_index.csv','r') )
+    fout = csv.writer( open('output/pdf_index_newest.csv','w') )
     fout.writerow(headers)
     for row in fin: 
         filehash = (row['cmte'],row['period'],row['year'])
@@ -77,7 +77,7 @@ def markamendments():
             
             
 def download():
-    fin = csv.DictReader( open('pdf_index_newest.csv','r') )
+    fin = csv.DictReader( open('output/pdf_index_newest.csv','r') )
     os.chdir(bulk_dir)
     existing = os.listdir('.')
     for row in fin:
